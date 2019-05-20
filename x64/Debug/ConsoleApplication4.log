@@ -1,0 +1,8 @@
+﻿  ConsoleApplication4.cpp
+d:\学习\cg\half-edge\consoleapplication4\consoleapplication4\matrix.h(26): warning C4305: “初始化”: 从“double”到“float”截断
+d:\学习\cg\half-edge\consoleapplication4\consoleapplication4\mesh.h(771): warning C4244: “参数”: 从“float”转换到“const unsigned __int64”，可能丢失数据
+d:\学习\cg\half-edge\consoleapplication4\consoleapplication4\mesh.h(1235): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+d:\学习\cg\half-edge\consoleapplication4\consoleapplication4\consoleapplication4.cpp(313): warning C4305: “参数”: 从“double”到“float”截断
+d:\学习\cg\half-edge\consoleapplication4\consoleapplication4\mesh.h(844): warning C4715: “returnnext_Edge”: 不是所有的控件路径都返回值
+  ConsoleApplication4.vcxproj -> D:\学习\cg\half-edge\ConsoleApplication4\x64\Debug\ConsoleApplication4.exe
+  ConsoleApplication4.vcxproj -> D:\学习\cg\half-edge\ConsoleApplication4\x64\Debug\ConsoleApplication4.pdb (Partial PDB)
