@@ -8,6 +8,7 @@ using namespace std;
 
 
 
+
 template<class T> 
 struct Node_int{
 	T x;
@@ -19,7 +20,7 @@ struct Node_int{
 };
 
 template<class T> 
-void insert(T x,T y, T z,Node_int<T> *outEdges) {
+Node_int<T>* insert(T x,T y, T z,Node_int<T> *outEdges) {
 
 	
 
@@ -30,13 +31,14 @@ void insert(T x,T y, T z,Node_int<T> *outEdges) {
 			outEdges->x = x;
 			outEdges->y = y;
 			outEdges->z = z;
+			return outEdges;
 			
 		}
 		else {
 			
 			
 				Node_int<T> *p1, *p;
-				p = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
+				//p = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
 				p1 = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
 				for (p = outEdges; p->next != NULL; p = p->next) {
 				}
@@ -48,7 +50,48 @@ void insert(T x,T y, T z,Node_int<T> *outEdges) {
 				p1->z = z;
 				p->next = p1;
 				p = p1;
-			
+				return p;
+		
+	}
+
+}
+
+template<class T>
+Node_int<T>* insert_face(Node_int<T>* face, Node_int<T> *outEdges) {
+
+	if (outEdges->isEmpty) {
+		
+		outEdges->x = face->x;
+		outEdges->y = face->y;
+		outEdges->z = face->z;
+
+
+		outEdges->isEmpty = false;
+		outEdges->pre = NULL;
+		outEdges->next = NULL;
+		
+		return outEdges;
+	}
+	else {
+		Node_int<T> *p,*p1;
+		//p = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
+		p1 = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
+		
+		for (p = outEdges; p->next != NULL; p = p->next) {
+		}
+
+		p1->x = face->x;
+		p1->y = face->y;
+		p1->z = face->z;
+		p1->isEmpty = false;
+		p1->next = NULL;
+
+		p->next = p1;
+		
+		
+
+		
+		return face;
 
 	}
 
@@ -57,7 +100,7 @@ void insert(T x,T y, T z,Node_int<T> *outEdges) {
 template<class T>
 int isInList(T x,T y, Node_int<T> *outEdges) {
 	Node_int<T>  *p;
-	p = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
+	//p = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
 	int count = 0;
 	int is = 0;//用来判断是否存在，存在返回正数
 	int h = 0;
@@ -88,7 +131,7 @@ int isInList(T x,T y, Node_int<T> *outEdges) {
 template<class T>
 int isInList_second(T x, T y, Node_int<T> *outEdges) {
 	Node_int<T>  *p;
-	p = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
+	//p = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
 	int count = 0;
 	int is = 0;//用来判断是否存在，存在返回正数
 	int h = 0;
@@ -132,13 +175,53 @@ template<class T>
 int getsize(Node_int<T> *outEdges) {
 		int i = 0;
 		Node_int<T> *p;
-		p = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
+		//p = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
 		for (p = outEdges; p != NULL; p = p->next) {
 			i++;
 		}
 		return i;
 
 }
+
+
+template<class T>
+Node_int<T>* insert2(T x, T y, T z, Node_int<T> *outEdges) {
+
+
+
+	if (outEdges->isEmpty) {
+		outEdges->isEmpty = false;
+		outEdges->pre = NULL;
+		outEdges->next = NULL;
+		outEdges->x = x;
+		outEdges->y = y;
+		outEdges->z = z;
+		return outEdges;
+
+	}
+	else {
+
+
+		Node_int<T> *p1, *p;
+		//p = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
+		p1 = (struct Node_int<T>*)malloc(sizeof(struct Node_int<T>));
+		for (p = outEdges; p->next != NULL; p = p->next) {
+		}
+		p1->isEmpty = false;
+		p1->next = NULL;
+		p1->pre = p;
+		p1->x = x;
+		p1->y = y;
+		p1->z = z;
+		p->next = p1;
+		p = p1;
+		return p;
+
+	}
+
+}
+
+
 
 
 #endif
